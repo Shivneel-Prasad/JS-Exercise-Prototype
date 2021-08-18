@@ -39,15 +39,36 @@ Airplane.prototype.land = function () {
         + It should return a string with `name` and `age`. Example: "Mary, 50"
 */
 
-function Person() {
-  
+function Person(name, age) {
+    this.name = name
+    this.age = age
+    this.stomach = []
 }
+    Person.prototype.eat = function(edible){
+      if(this.stomach.length < 10){
+        this.stomach.push(edible)
+      }
+    }
 
+    Person.prototype.poop = function(){
+        this.stomach = []
+    }
 
-
-
-
-
+    Person.prototype.toString = function(){
+        return `${this.name} and ${this.age}`;
+    }
+    
+    // create my object
+    const cam = new Person('Cam', 20);
+    const spencer = new Person('Spencer', 28);
+    /*
+    // create what it eat
+    spencer.eat('pizza');
+    spencer.eat('cake');
+    spencer.eat('chicken');
+    spencer.eat('sandwich');
+    spencer.eat('ice cream');
+    */
 
 /*
   TASK 2
@@ -64,29 +85,44 @@ function Person() {
 */
 
 function Car() {
-  
+  /*
+    
+  */
 }
 
 
 /*
   TASK 3
-    - Write a Baby constructor subclassing Person.
+    - Write a Baby constructor sub-classing Person.
     - Besides `name` and `age`, Baby takes a third argument to initialize `favoriteToy`.
     - Besides the methods on Person.prototype, babies have the ability to `.play()`:
         + Should return a string "Playing with x", x being the favorite toy.
 */
-function Baby() {
- 
-}
+function Baby(name, age, favoriteToy) {
+    this.name = name
+    this.age = age
+    this.favoriteToy = favoriteToy
+};
 
+  Baby.prototype = Object.create(Person.prototype)
+    Baby.prototype.play = function () {
+      return `Playing with ${this.favoriteToy}`;
+    }
+
+  const jack = new Baby('Jack', '2', 'Teddy Bear');
+  console.log(jack.play());
 
 /* 
   TASK 4
   In your own words explain the four principles for the "this" keyword below:
-  1. 
-  2. 
-  3. 
-  4. 
+  1. Default Binding
+    - In non-strict mode 'this' keyword will be by default in global object, but if its on strict mode the keyword will be undefined as it requires a variable.
+  2. Implicit Binding
+    - It points to the object with methods on which the function is invoked  
+  3. Explicit Binding 
+    - it tells the JavaScript engine to set it to point to a certain value using call, apply or bind.   - 
+  4. New Binding
+    - using the new keyword constructs a new object and this keyword point to the newly created object.
 */
 
 
