@@ -61,14 +61,18 @@ function Person(name, age) {
     // create my object
     const cam = new Person('Cam', 20);
     const spencer = new Person('Spencer', 28);
-    /*
+    
     // create what it eat
     spencer.eat('pizza');
     spencer.eat('cake');
     spencer.eat('chicken');
     spencer.eat('sandwich');
     spencer.eat('ice cream');
-    */
+    
+    console.log(spencer.stomach);
+
+    spencer.poop();
+    console.log(spencer.stomach)
 
 /*
   TASK 2
@@ -84,11 +88,18 @@ function Person(name, age) {
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
 
-function Car() {
-  /*
-    
-  */
+function Car(model, milesPerGallon) {
+  this.model = model
+  this.milesPerGallon = milesPerGallon
+  this.tank = 0
+  this.odometer = 0
+  
 }
+Car.prototype.fill = function(gallons){
+  this.tank += gallons;
+}
+const Lancer = new Car('Mitsubishi Lancer', 25);
+Lancer.fill(25);
 
 
 /*
